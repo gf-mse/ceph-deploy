@@ -1,0 +1,12 @@
+--- osd.py      2023-03-13 13:54:31.218294491 +1100
++++ osd.py      2023-03-13 14:05:26.480308646 +1100
+@@ -372,7 +372,9 @@
+             command,
+         )
+         for line in out:
+-            line = line.decode('utf-8')
++            _decode = getattr(line, 'decode', None)
++            if _decode:
++                line = _decode('utf-8')
+             if line.startswith('Disk /'):
+                 distro.conn.logger.info(line)
