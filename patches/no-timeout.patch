@@ -1,0 +1,15 @@
+--- connection.py       2023-09-24 10:22:41.187722206 +0000
++++ connection.py       2023-09-24 12:03:38.095431398 +0000
+@@ -17,9 +17,10 @@
+             detect_sudo=detect_sudo,
+         )
+
+-        # Set a timeout value in seconds to disconnect and move on
+-        # if no data is sent back.
+-        conn.global_timeout = 300
++        # // Set a timeout value in seconds to disconnect and move on
++        # // if no data is sent back.
++        # unsetting this or using a -1 shall unset the timeout
++        ## conn.global_timeout = 300
+         logger.debug("connected to host: %s " % hostname)
+         return conn
